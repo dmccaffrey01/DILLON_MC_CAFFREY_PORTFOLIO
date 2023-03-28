@@ -135,7 +135,7 @@ header {
     /* Nav Bar */
 
     .hamburger {
-        display: flex;
+        display: block;
     }
 
     .hamburger.active .bar:nth-child(2) {
