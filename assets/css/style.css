@@ -1,3 +1,6 @@
+/* Import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -13,9 +16,7 @@ body {
     background-color: var(--MAIN-BG);
     min-height: 100vh;
     position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: "Lato", sans-serif;
 }
 
 /* Header */
@@ -25,6 +26,9 @@ body {
     background-color: var(--MAIN-BG);
     display: flex;
     justify-content: center;
+    position: fixed;
+    top: 0px;
+    font-family: "Source-Sans-Pro", sans-serif;
 }
 
 /* Welcome Section */
@@ -32,4 +36,5 @@ body {
 .welcome-name{
     color: var(--WHITE-TEXT);
     font-size: 3rem;
+    font-family: "Source-Sans-Pro", sans-serif;
 }
