@@ -4,8 +4,13 @@
     box-sizing: border-box;
 }
 
+:root {
+    --MAIN-BG: #262626;
+    --WHITE-TEXT: #ffffff;
+}
+
 body {
-    background-color: #262626;
+    background-color: var(--MAIN-BG);
     min-height: 100vh;
     position: relative;
     display: flex;
@@ -13,9 +18,18 @@ body {
     align-items: center;
 }
 
+/* Header */
+
+.header-container{
+    height: 75px;
+    background-color: var(--MAIN-BG);
+    display: flex;
+    justify-content: center;
+}
+
 /* Welcome Section */
 
 .welcome-name{
-    color: #ffffff;
+    color: var(--WHITE-TEXT);
     font-size: 3rem;
 }
