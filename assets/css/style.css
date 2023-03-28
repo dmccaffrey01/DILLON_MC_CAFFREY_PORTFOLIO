@@ -12,3 +12,10 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+/* Welcome Section */
+
+.welcome-name{
+    color: #ffffff;
+    font-size: 3rem;
+}
