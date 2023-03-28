@@ -189,7 +189,7 @@ header {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px
+    gap: 30px
 }
 
 /* Welcome Name */
@@ -223,4 +223,18 @@ header {
 .wel-nav-link {
     text-decoration: none;
     color: var(--WHITE-TEXT);
+}
+
+@media (max-width: 768px) {
+    /* Welcome Name */
+
+    .welcome-name {
+        white-space: pre-line;
+        text-align: center;
+    }
+
+    .wel-nav-menu {
+        width: 300px;
+        gap: 40px;
+    }
 }
