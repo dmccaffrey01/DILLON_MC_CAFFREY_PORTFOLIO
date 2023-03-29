@@ -343,3 +343,49 @@ footer {
     text-align: center;
 }
 
+@media (max-width: 1200px) {
+    /* About Me Section */
+
+    .about-me-container {
+        width: 1000px;
+        gap: 30px
+    }
+
+    .about-me-card-container {
+        width: 290px;
+        height: 290px;
+    }
+
+    .about-me-description {
+        font-size: 1rem;
+        line-height: 1.4rem;
+    }
+
+    .interests-heading {
+        font-size: 1rem;
+        line-height: 1rem;
+    }
+
+    .interests-item {
+        font-size: 0.7rem;
+        padding: 4px;
+    }
+
+    .interests-item-heading {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    /* About Me Section */
+    
+    .about-me-section {
+        height: 1500px;
+    }
+
+    .about-me-container {
+        width: 700px;
+        flex-direction: column;
+    }
+
+}
