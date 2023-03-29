@@ -177,6 +177,33 @@ header {
     }
 }
 
+/* Footer */
+
+footer {
+    width: 100vw;
+    background-color: var(--MAIN-TP);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    font-family: "Source-Sans-Pro", sans-serif;
+}
+
+.footer-container {
+    height: 75px;
+    width: calc(100vw - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--WHITE-TEXT);
+}
+
+.copyright {
+    font-size: 1.2rem;
+    white-space: pre-line;
+}
+
 /* Welcome Section */
 
 .welcome-section {
