@@ -278,6 +278,12 @@ footer {
     background-color: var(--LIGHT-BG);
 }
 
+.section-heading {
+    font-size: 3rem;
+    color: var(--WHITE-TEXT);
+    text-decoration: underline;
+}
+
 .about-me-container {
     width: 1200px;
     display: flex;
@@ -390,12 +396,66 @@ footer {
 
 }
 
-/* Work Section */
+/* Skills Section */
 
-.work-section {
+.skills-section {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--LIGHT-BG);
+}
+
+.skills-container {
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Skills Showcase */
+
+.skills-showcase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.skills-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.skills-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skills-icon i {
+    font-size: 4rem;
+    color: var(--WHITE-TEXT);
+}
+
+/* Skills Description */
+
+.skills-description-container {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.s-d-line {
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px;
+    text-align: start;
 }
