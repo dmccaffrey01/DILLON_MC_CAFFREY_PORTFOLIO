@@ -117,7 +117,7 @@ header {
     font-size: 1.7rem;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     /* Nav Bar */
 
     .nav-menu {
@@ -127,7 +127,7 @@ header {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     /* Header */
 
     .header-container {
@@ -393,7 +393,6 @@ footer {
         width: 700px;
         flex-direction: column;
     }
-
 }
 
 /* Skills Section */
@@ -458,4 +457,25 @@ footer {
     font-size: 1.1rem;
     padding: 10px;
     text-align: start;
+}
+
+@media (max-width: 1000px) {
+    /* Skills Section */
+
+    .skills-section {
+        height: 1300px;
+    }
+
+    .skills-container {
+        width: 350px;
+    }
+
+    .skills-wrapper {
+        width: 300px;
+        flex-wrap: wrap;
+    }
+
+    .skills-description-container {
+        width: 350px;
+    }
 }
