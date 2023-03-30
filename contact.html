@@ -86,65 +86,18 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section" id="skills-section">
-        <div class="skills-container">
-            <div class="section-heading">
-                Skills
-            </div>
-            <div class="skills-showcase">
-                <div class="skills-wrapper">
-                    <div class="skills-icon">    
-                        <i class="devicon-html5-plain-wordmark"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-css3-plain-wordmark"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-javascript-plain"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-python-plain"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-react-original"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-redux-original"></i>
-                    </div>
-                </div>
-                <div class="skills-wrapper">
-                    <div class="skills-icon">
-                        <i class="devicon-jquery-plain"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-bootstrap-plain"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-flask-original"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-git-plain-wordmark"></i>
-                    </div>
-                    <div class="skills-icon">
-                        <i class="devicon-github-original-wordmark"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="skills-description-container">
-                <p class="s-d-line">
-                    Strong foundation in HTML, CSS, JavaScript, Python, Flask. These are the main programming languages I used throughout my Projects in Code Institute
-                </p>
-                <p class="s-d-line">
-                    Familiarity with web development frameworks and libraries such as React, Redux, jQuery, Bootstrap, SASS, SQL. I have used these programming languages in smaller projects and know the fundamentals of them.
-                </p>
-                <p class="s-d-line">
-                    Experience with Git, GitHub, APIs, Unit Testing, Debugging, writing documentation. Throughout my projects I consistently used these tools to complete the required task
-                </p>
-                <p class="s-d-line">
-                    Understanding of key programming concepts like OOP, Functional Programming, Data Structures and Algorithms, UX Design and Mobile responsiveness.
-                </p> 
-            </div>
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <form method="post" class="contact-form">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-input contact-name-input" name="name" id="name">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-input contact-email-input" name="email" id="email">
+                <label for="message" class="form-label">Message</label>
+                <textarea rows="3" class="form-input contact-message-input" id="message" name="message">Leave a message for Dillon...</textarea>
+                <input type="button" value="Send" class="send-email-btn">
+            </form> 
         </div>
     </section>
 
@@ -162,5 +115,6 @@
     <script src="https://kit.fontawesome.com/5821df7d40.js" crossorigin="anonymous"></script>
     <!-- JavaScript -->
     <script src="assets/js/nav-menu.js"></script>
+    <script src="assets/js/projects.js"></script>
 </body>
 </html>

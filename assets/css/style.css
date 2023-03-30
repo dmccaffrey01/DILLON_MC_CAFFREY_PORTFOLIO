@@ -609,10 +609,10 @@ footer {
 
 .showcase-item-description-container {
     height: 150px;
-    width: 300px;
+    width: 320px;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: center;
     background: var(--MAIN-BG);
     border: 1px solid var(--WHITE-TEXT);
     border-radius: 5px;
@@ -653,3 +653,66 @@ footer {
         width: 300px;
     }
 }
+
+/* Contact Form section */
+
+.contact-section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--LIGHT-BG);
+}
+
+.contact-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label {
+    font-size: 2.5rem;
+    color: var(--WHITE-TEXT);
+}
+
+.form-input {
+    width: 300px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 2px solid var(--WHITE-TEXT);
+    color: var(--WHITE-TEXT);
+    font-size: 2rem;
+    background-color: var(--LIGHT-BG);
+    text-align: center;
+}
+
+.form-input:focus {
+    border: 3px solid var(--MAIN-BG);
+    outline: none;
+}
+
+.contact-email-input {
+    width: 450px;
+}
+
+.contact-message-input {
+    width: 600px;
+}
+
+.form-textarea:focus {
+    border: 3px solid var(--MAIN-BG);
+    outline: none;
+}
+
+.send-email-btn {
+    color: var(--WHITE-TEXT);
+    font-size: 2rem;
+    padding: 20px;
+    background-color: var(--MAIN-BG);
+    border-radius: 5px;
+    border: 2px solid var(--WHITE-TEXT);
+    cursor: pointer;
+}
+
