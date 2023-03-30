@@ -509,7 +509,15 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 10px;
+}
+
+.showcase-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .showcase-item-container {
@@ -550,6 +558,8 @@ footer {
 .showcase-footer-links a {
     text-decoration: none;
 }
+
+/* Showcase carousel */
 
 .carousel-container {
     position: relative;
@@ -593,4 +603,32 @@ footer {
 
 .carousel-container .blocked {
     color: var(--LIGHT-BG);
+}
+
+/* Showcase description */
+
+.showcase-item-description-container {
+    height: 150px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    background: var(--MAIN-BG);
+    border: 1px solid var(--WHITE-TEXT);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.showcase-item-description {
+    color: var(--WHITE-TEXT);
+    line-height: 1.5rem;
+}
+
+.projects-description-container {
+    width: 600px;
+}
+
+.projects-description-container p {
+    color: var(--WHITE-TEXT);
+    padding: 10px;
 }
