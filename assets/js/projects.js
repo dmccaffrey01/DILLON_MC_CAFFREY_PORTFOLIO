@@ -12,15 +12,26 @@ function carouselCall(num) {
         if (position > -(itemWidth - carouselWidth)) {
             position -= carouselWidth;
             items.style.transform = `translateX(${position}px)`;
-            
+            if (prevBtn.classList.contains("blocked")) {
+                prevBtn.classList.remove("blocked")
+            }
+            if (!(position > -(itemWidth - carouselWidth))) {
+                nextBtn.classList.add("blocked")
+            }
         }
+
     });
 
     prevBtn.addEventListener('click', () => {
         if (position < 0) {
             position += carouselWidth;
             items.style.transform = `translateX(${position}px)`;
-            
+            if (nextBtn.classList.contains("blocked")) {
+                nextBtn.classList.remove("blocked")
+            }
+            if (!(position < 0)) {
+                prevBtn.classList.add("blocked")
+            }
         }
     });
 }
