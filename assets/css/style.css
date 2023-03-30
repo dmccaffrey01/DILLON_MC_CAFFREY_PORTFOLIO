@@ -632,3 +632,24 @@ footer {
     color: var(--WHITE-TEXT);
     padding: 10px;
 }
+
+@media (max-width: 1000px) {
+    /* Projects Section */
+
+    .projects-section {
+        height: 2100px;
+    }
+
+    .projects-container {
+        width: 350px;
+    }
+
+    .projects-showcase {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .projects-description-container {
+        width: 300px;
+    }
+}
