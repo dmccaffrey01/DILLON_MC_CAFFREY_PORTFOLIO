@@ -1,49 +1,57 @@
-const sendEmailBtn = document.querySelector(".send-email-btn");
+const form = document.querySelector(".contact-form")
+const formID = "230885002127045"
+const apiKey = "f7bd66db8e94d4f67eec27a3fa10f097"
+
 const nameInput = document.querySelector(".contact-name-input");
 const emailInput = document.querySelector(".contact-email-input");
 const messageInput = document.querySelector(".contact-message-input");
+
 messageInput.addEventListener("focus", () => {
 	if (messageInput.value == "Leave a message for Dillon...") {
 		messageInput.value = "";
 	}
 });
-sendEmailBtn.addEventListener("click", () => {
-	sendEmail();
-});
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault
+    sendEmail(event);
+})
 
 /**
  * Send email
  */
 function sendEmail() {
-	let name = nameInput.value;
-	let email = emailInput.value;
-	let message = messageInput.value;
+    /** 
+	const formData = {
+        name: nameInput.value,
+        email: emailInput.value,
+        message: messageInput.value
+    }
 
-	if (name == "" || email == "") {
+	
+	if (formData.name == "" || formData.email == "") {
 		dispalyAlert("Please fill in your name and email", "OK", () => {return;});
 		return false;
 	}
+	*/
 
-	Email.send({
-		SecureToken : "38409570-4dc0-4846-9923-ab69e941e08e",
-		To : `${email}`,
-		From : "dillonmccaffrey.ci@outlook.com",
-		Subject : "Message from API",
-		Body : `Thank you, ${name} for looking at Dillon's website, hope you enjoyed playing the game and quiz. Your message was ${message}`
-	}).then(
-	  
-	);
+	// Get form data
+	const formData = new FormData(event.target);
 
-	Email.send({
-		SecureToken : "38409570-4dc0-4846-9923-ab69e941e08e",
-		To : 'dmccaffrey01@gmail.com',
-		From : "dillonmccaffrey.ci@outlook.com",
-		Subject : "Message from API",
-		Body : `${name} sent you a message. There message is: ${message}`
-	}).then(
-	  message => dispalyAlert(`Email sent to ${email}! Check your junk or spam inbox. And your message was sent to Dillon, Thank you ${name}`, "OK", () => {return;})
-	);
-	
+	// Send form data to server-side script
+	fetch('https://portfolio-form-api.herokuapp.com/submit', {
+	  method: 'POST',
+	  body: formData
+	}).then(response => {
+	  if (response.ok) {
+		// Handle successful response from server
+	  } else {
+		// Handle error response from server
+	  }
+	});
+
+
+		
 	resetForm();
 }
 

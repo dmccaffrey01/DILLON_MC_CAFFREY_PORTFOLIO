@@ -10,6 +10,7 @@
 :root {
     --MAIN-BG: #262626;
     --MAIN-TP: #262626e3;
+    --DARK-BG: #262626;
     --LIGHT-BG: #333333;
     --WHITE-TEXT: #ffffff;
     --NAV: #262626e3;
@@ -279,7 +280,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--LIGHT-BG);
+    background-color: var(--MAIN-BG);
 }
 
 .section-heading {
@@ -406,7 +407,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--LIGHT-BG);
+    background-color: var(--MAIN-BG);
 }
 
 .skills-container {
@@ -491,7 +492,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--LIGHT-BG);
+    background-color: var(--MAIN-BG);
 }
 
 .projects-container {
@@ -551,7 +552,7 @@ footer {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid var(--WHITE-TEXT);
-    background-color: var(--LIGHT-BG);
+    background-color: var(--MAIN-BG);
     cursor: pointer;
 }
 
@@ -602,7 +603,7 @@ footer {
 }
 
 .carousel-container .blocked {
-    color: var(--LIGHT-BG);
+    color: var(--MAIN-BG);
 }
 
 /* Showcase description */
@@ -661,7 +662,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--LIGHT-BG);
+    background-color: var(--MAIN-BG);
 }
 
 .contact-form {
@@ -684,7 +685,7 @@ footer {
     border: 2px solid var(--WHITE-TEXT);
     color: var(--WHITE-TEXT);
     font-size: 2rem;
-    background-color: var(--LIGHT-BG);
+    background-color: var(--MAIN-BG);
     text-align: center;
 }
 
