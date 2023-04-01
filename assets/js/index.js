@@ -2,24 +2,27 @@ var scrollPositionY = 0;
 var ticking = false;
 var pageHeight = document.body.scrollHeight;
 var screenHeight = pageHeight / 2
+const sectionWrapper = document.querySelector(".section-wrapper")
+
 
 window.addEventListener('scroll', function(e) {
     scrollPositionY = window.pageYOffset;
     pageHeight = document.body.scrollHeight;
     screenHeight = pageHeight / 2
     if (scrollPositionY >= (screenHeight)) {
-        return;
-    }
-
-    if (!ticking) {
         window.requestAnimationFrame(function() {
-        updateColor();
-        fadeInHeaderFooter();
-        ticking = false;
+                horizontalScroll();
+                ticking = false;
+            });
+            ticking = true;
+    } else if (!ticking) {
+        window.requestAnimationFrame(function() {
+            updateColor();
+            fadeInHeaderFooter();
+            ticking = false;
         });
         ticking = true;
     }
-    
 });
 
 function updateColor() {
@@ -89,3 +92,70 @@ function calculateOpacity() {
     }
     return opacity
 }
+
+var contents = document.querySelectorAll('.content-section');
+var wrapper = document.querySelector(".section-wrapper")
+var wrapperWidth = wrapper.offsetWidth
+const pxAmount = 10
+function slideContent(deltaY) {
+    var numContents = contents.length;
+    for (i = 0; i < numContents; i++) {
+        let amountToMove = 0
+        if (deltaY > 0) {
+            amountToMove = -(pxAmount)
+        } else {
+            amountToMove = pxAmount
+        }
+        let currentPosition = contents[i].offsetLeft
+        if (currentPosition > (-(pxAmount * 2)) && amountToMove == -pxAmount && i == 0) {
+            contents[0].style.left = `${pxAmount}px`;
+            contents[1].style.left = `${(wrapperWidth + pxAmount)}px`;
+            contents[2].style.left = `${(wrapperWidth * 2) + pxAmount}px`;
+            contents[3].style.left = `${(wrapperWidth * 3) + pxAmount}px`;
+        } else if (currentPosition < (pxAmount * 2) && amountToMove == pxAmount && i == 3) {
+            contents[3].style.left = `-5px`;
+            contents[2].style.left = `${-(wrapperWidth + pxAmount)}px`;
+            contents[1].style.left = `${-(wrapperWidth * 2) + pxAmount}px`;
+            contents[0].style.left = `${-(wrapperWidth * 3) + pxAmount}px`;
+        }
+        contents[i].style.left = `${currentPosition + amountToMove}px`;
+        console.log(contents[i].offsetLeft)
+    }
+}
+
+function horizontalScroll() {
+    disableVerticalScroll()
+    
+    window.addEventListener("wheel", function(event) {
+        var deltaY = event.deltaY;
+        
+        if (deltaY < 0 && contents[0].offsetLeft == 0) {
+            enableVerticalScroll()
+            return;
+        }
+
+        slideContent(deltaY);
+
+    });
+    
+}
+
+function disableVerticalScroll() {
+    var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
+    window.onscroll = function() {
+        window.scrollTo(0, scrollPosition);
+    };
+}
+
+function enableVerticalScroll() {
+    window.onscroll = function() {};
+}
+
+window.addEventListener("load", () => {
+    scrollPositionY = window.pageYOffset;
+    pageHeight = document.body.scrollHeight;
+    screenHeight = pageHeight / 2
+    updateColor();
+    fadeInHeaderFooter();
+})

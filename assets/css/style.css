@@ -21,6 +21,10 @@ body {
     min-height: 100vh;
     position: relative;
     font-family: "Lato", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 a:visited {
@@ -31,6 +35,7 @@ a:visited {
 
 header {
     width: 100vw;
+    overflow: hidden;
     background-color: var(--MAIN-TP);
     display: flex;
     justify-content: center;
@@ -38,6 +43,7 @@ header {
     position: fixed;
     top: 0px;
     font-family: "Source-Sans-Pro", sans-serif;
+    z-index: 2;
 }
 
 .header-container {
@@ -186,6 +192,7 @@ header {
 
 footer {
     width: 100vw;
+    overflow: hidden;
     background-color: var(--MAIN-TP);
     display: flex;
     justify-content: center;
@@ -275,12 +282,35 @@ footer {
 
 /* About Me Section */
 
-.about-me-section {
+.section-wrapper {
+    overflow: hidden;
+    width: 98vw;
     height: 100vh;
+    position: relative;
+}
+
+.content-section {
+    height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--MAIN-BG);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.5s ease;
+}
+
+.skills-section {
+    left: 100%
+}
+
+.projects-section {
+    left: 200%
+}
+
+.contact-section {
+    left: 300%
 }
 
 .section-heading {
@@ -404,6 +434,8 @@ footer {
 
 .skills-section {
     height: 100vh;
+    width: 100vw;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -487,14 +519,6 @@ footer {
 
 /* Projects Section */
 
-.projects-section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--MAIN-BG);
-}
-
 .projects-container {
     width: 1200px;
     display: flex;
@@ -568,7 +592,6 @@ footer {
     height: 200px;
     overflow: hidden;
     border-radius: 5px;
-    
 }
   
 .carousel-items {
@@ -656,14 +679,6 @@ footer {
 }
 
 /* Contact Form section */
-
-.contact-section {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--MAIN-BG);
-}
 
 .contact-form {
     display: flex;
