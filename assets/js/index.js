@@ -100,27 +100,21 @@ function fadeInHeaderFooter() {
 function calculateOpacity() {
     let opacity = ((scrollPositionY - (screenHeight / 2 )) / screenHeight) * 2
     if (scrollPositionY < (screenHeight / 2)) {
-        opacity = 0
+        opacity = 0;
     }
-    return opacity
+    return opacity;
 }
 
 var sliding = false;
-var horizontalScrollCounter = 0
 function horizontalScroll() {
-    disableVerticalScroll()
+    disableVerticalScroll();
     
     window.addEventListener("wheel", function(event) {
         if (scrollPositionY >= (screenHeight)) {
             if (sliding == true) {
                 return;
             }
-
-            if (horizontalScrollCounter < 1) {
-                horizontalScrollCounter++;
-                return;
-            }
-            
+        
             var deltaY = event.deltaY;
             
             if (deltaY < 0 && getTranslateX(contents[0]) >= 0) {
@@ -130,7 +124,12 @@ function horizontalScroll() {
             }
 
             slideContent(deltaY);
+            
+            setTimeout(() => {
+                updateSwipeFeature();
+            }, 250)
         }
+        
     });
     
 }
@@ -159,18 +158,31 @@ function slideContent(deltaY) {
         let translateXPercentage = getTranslateX(contents[i])
         contents[i].style.transform = `translateX(${translateXPercentage + amountToMove}%)`;
     }
-    sliding = false;
+    updateCurrentSectionNumber(deltaY);
+    setTimeout(() => {
+        sliding = false;
+    }, 250)
+    
 }
 
+var currentSectionNumber = 0
 const translateAmount = 50;
 function getAmountToMove(deltaY) {
     let amountToMove = 0
     if (deltaY > 0) {
-        amountToMove = -(translateAmount)
+        amountToMove = -(translateAmount);
     } else {
-        amountToMove = translateAmount
+        amountToMove = translateAmount;
     }
     return amountToMove
+}
+
+function updateCurrentSectionNumber(deltaY) {
+    if (deltaY > 0) {
+        currentSectionNumber += 0.5;
+    } else {
+        currentSectionNumber -= 0.5;
+    }
 }
 
 function getTranslateX(element) {
@@ -223,6 +235,7 @@ function scrollToSection(link) {
 }
 
 function moveToSection(num) {
+    currentSectionNumber = num
     for (let i = 0; i < numContents; i++) {
         let currentTranslateX = 100 * i
         contents[i].style.transform = `translateX(${currentTranslateX - (100 * num)}%)`;
@@ -232,6 +245,7 @@ function moveToSection(num) {
     screenHeight = pageHeight / 2;
     updateColor();
     fadeInHeaderFooter();
+    updateSwipeFeature();
 }
 
 function disableTransition() {
@@ -246,6 +260,50 @@ function enableTransition() {
     }
 }
 
+const dots = document.querySelectorAll(".dot");
+function updateSwipeFeature() {
+    let activeDot = getActiveDot();
+    if (currentSectionNumber == 0 && activeDot != 0) {
+        removeActiveDot(activeDot);
+        addActiveDot(0);
+    } else if (currentSectionNumber == 1 && activeDot != 1) {
+        removeActiveDot(activeDot);
+        addActiveDot(1);
+    } else if (currentSectionNumber == 2 && activeDot != 2) {
+        removeActiveDot(activeDot);
+        addActiveDot(2);
+    } else if (currentSectionNumber == 3 && activeDot != 3) {
+        removeActiveDot(activeDot);
+        addActiveDot(3);
+    }
+}
+
+function getActiveDot() {
+    for (let i = 0; i < numContents; i++) {
+        if (dots[i].classList.contains("active")) {
+            return i;
+        }
+    }
+}
+
+function removeActiveDot(activeDot) {
+    dots[activeDot].classList.remove("active");
+}
+
+function addActiveDot(activeDot) {
+    dots[activeDot].classList.add("active");
+}
+
+const swipeRight = document.querySelector(".swipe-right")
+swipeRight.addEventListener("click", () => {
+    moveToSection(Math.floor(currentSectionNumber + 1));
+})
+
+const swipeLeft = document.querySelector(".swipe-left")
+swipeLeft.addEventListener("click", () => {
+    moveToSection(Math.ceil(currentSectionNumber - 1));
+})
+
 var pageReload = false
 window.addEventListener("load", () => {
     pageReload = true
@@ -256,6 +314,7 @@ window.addEventListener("load", () => {
         updateColor();
         fadeInHeaderFooter();
         displayHeaderFooter();
+        updateSwipeFeature()
     }
     pageReload = false
 })
