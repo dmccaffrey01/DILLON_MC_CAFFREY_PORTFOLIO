@@ -6,15 +6,19 @@ const sectionWrapper = document.querySelector(".section-wrapper")
 
 
 window.addEventListener('scroll', function(e) {
+    if (window.innerWidth <= 1000) {
+        return;
+    }
     scrollPositionY = window.pageYOffset;
     pageHeight = document.body.scrollHeight;
-    screenHeight = pageHeight / 2
+    screenHeight = Math.floor(pageHeight / 2)
+    
     if (scrollPositionY >= (screenHeight)) {
         window.requestAnimationFrame(function() {
-                horizontalScroll();
-                ticking = false;
-            });
-            ticking = true;
+            horizontalScroll();
+            ticking = false;
+        });
+        ticking = true;
     } else if (!ticking) {
         window.requestAnimationFrame(function() {
             updateColor();
@@ -26,8 +30,12 @@ window.addEventListener('scroll', function(e) {
 });
 
 function updateColor() {
-    let newColor = calculateColor();
-    document.documentElement.style.setProperty("--MAIN-BG", newColor)
+    let scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    let scrolledToBottom = Math.ceil(window.scrollY) >= scrollableHeight;
+    if (!scrolledToBottom) {
+        let newColor = calculateColor();
+        document.documentElement.style.setProperty("--MAIN-BG", newColor)
+    }
 }
 
 function calculateColor() {
@@ -78,11 +86,15 @@ function convertSecondNumber(secondNum) {
 }
 
 function fadeInHeaderFooter() {
-    let opacity = calculateOpacity()
-    let header = document.querySelector("header")
-    let footer = document.querySelector("footer")
-    header.style.opacity = opacity
-    footer.style.opacity = opacity
+    let scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+    let scrolledToBottom = Math.ceil(window.scrollY) >= scrollableHeight;
+    if (!scrolledToBottom) {
+        let opacity = calculateOpacity()
+        let header = document.querySelector("header")
+        let footer = document.querySelector("footer")
+        header.style.opacity = opacity
+        footer.style.opacity = opacity
+    }
 }
 
 function calculateOpacity() {
@@ -93,49 +105,32 @@ function calculateOpacity() {
     return opacity
 }
 
-var contents = document.querySelectorAll('.content-section');
-var wrapper = document.querySelector(".section-wrapper")
-var wrapperWidth = wrapper.offsetWidth
-const pxAmount = 10
-function slideContent(deltaY) {
-    var numContents = contents.length;
-    for (i = 0; i < numContents; i++) {
-        let amountToMove = 0
-        if (deltaY > 0) {
-            amountToMove = -(pxAmount)
-        } else {
-            amountToMove = pxAmount
-        }
-        let currentPosition = contents[i].offsetLeft
-        if (currentPosition > (-(pxAmount * 2)) && amountToMove == -pxAmount && i == 0) {
-            contents[0].style.left = `${pxAmount}px`;
-            contents[1].style.left = `${(wrapperWidth + pxAmount)}px`;
-            contents[2].style.left = `${(wrapperWidth * 2) + pxAmount}px`;
-            contents[3].style.left = `${(wrapperWidth * 3) + pxAmount}px`;
-        } else if (currentPosition < (pxAmount * 2) && amountToMove == pxAmount && i == 3) {
-            contents[3].style.left = `-5px`;
-            contents[2].style.left = `${-(wrapperWidth + pxAmount)}px`;
-            contents[1].style.left = `${-(wrapperWidth * 2) + pxAmount}px`;
-            contents[0].style.left = `${-(wrapperWidth * 3) + pxAmount}px`;
-        }
-        contents[i].style.left = `${currentPosition + amountToMove}px`;
-        console.log(contents[i].offsetLeft)
-    }
-}
-
+var sliding = false;
+var horizontalScrollCounter = 0
 function horizontalScroll() {
     disableVerticalScroll()
     
     window.addEventListener("wheel", function(event) {
-        var deltaY = event.deltaY;
-        
-        if (deltaY < 0 && contents[0].offsetLeft == 0) {
-            enableVerticalScroll()
-            return;
+        if (scrollPositionY >= (screenHeight)) {
+            if (sliding == true) {
+                return;
+            }
+
+            if (horizontalScrollCounter < 1) {
+                horizontalScrollCounter++;
+                return;
+            }
+            
+            var deltaY = event.deltaY;
+            
+            if (deltaY < 0 && getTranslateX(contents[0]) >= 0) {
+                enableVerticalScroll();
+                horizontalScrollCounter = 0;
+                return;
+            }
+
+            slideContent(deltaY);
         }
-
-        slideContent(deltaY);
-
     });
     
 }
@@ -152,10 +147,49 @@ function enableVerticalScroll() {
     window.onscroll = function() {};
 }
 
+var contents = document.querySelectorAll('.content-section');
+var numContents = contents.length;
+function slideContent(deltaY) {
+    if (getTranslateX(contents[3]) == 0 && deltaY > 0) {
+        return;
+    }
+    sliding = true;
+    for (i = 0; i < numContents; i++) {
+        let amountToMove = getAmountToMove(deltaY)
+        let translateXPercentage = getTranslateX(contents[i])
+        contents[i].style.transform = `translateX(${translateXPercentage + amountToMove}%)`;
+    }
+    sliding = false;
+}
+
+const translateAmount = 50;
+function getAmountToMove(deltaY) {
+    let amountToMove = 0
+    if (deltaY > 0) {
+        amountToMove = -(translateAmount)
+    } else {
+        amountToMove = translateAmount
+    }
+    return amountToMove
+}
+
+function getTranslateX(element) {
+    let computedStyle = window.getComputedStyle(element)
+    let transform = computedStyle.getPropertyValue("transform")
+    let matrix = new DOMMatrixReadOnly(transform);
+    let translateX = matrix.m41;
+    let width = element.offsetWidth
+    let translateXPercentage = Math.round((translateX / width) * 100);
+    let rounded = Math.round(translateXPercentage / translateAmount) * translateAmount
+    return rounded
+}
+
 window.addEventListener("load", () => {
     scrollPositionY = window.pageYOffset;
     pageHeight = document.body.scrollHeight;
     screenHeight = pageHeight / 2
-    updateColor();
-    fadeInHeaderFooter();
+    if (window.innerWidth > 1000) {
+        updateColor();
+        fadeInHeaderFooter();
+    }
 })

@@ -211,6 +211,14 @@ footer {
     color: var(--WHITE-TEXT);
 }
 
+/* Media Query for mobile size */
+
+@media (max-width: 1000px) {
+    footer {
+        position: absolute;
+    }
+}
+
 .copyright {
     font-size: 1.2rem;
     white-space: pre-line;
@@ -275,12 +283,11 @@ footer {
     }
 
     .wel-nav-menu {
-        width: 300px;
-        gap: 40px;
+        display: none;
     }
 }
 
-/* About Me Section */
+/* Sections */
 
 .section-wrapper {
     overflow: hidden;
@@ -301,17 +308,40 @@ footer {
     transition: transform 0.5s ease;
 }
 
+.about-me-section {
+    transform: translateX(0%);
+}
+
 .skills-section {
-    left: 100%
+    transform: translateX(100%);
 }
 
 .projects-section {
-    left: 200%
+    transform: translateX(200%);
 }
 
 .contact-section {
-    left: 300%
+    transform: translateX(300%);
 }
+
+/* Media query for mobile */
+
+@media (max-width: 1000px) {
+    .section-wrapper {
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .content-section {
+        position: relative;
+        transform: translateX(0%);
+        height: fit-content;
+        padding: 60px 0;
+    }
+}
+
+/* About Me Section */
 
 .section-heading {
     font-size: 3rem;
@@ -419,10 +449,6 @@ footer {
 
 @media (max-width: 1000px) {
     /* About Me Section */
-    
-    .about-me-section {
-        height: 1500px;
-    }
 
     .about-me-container {
         width: 700px;
@@ -431,16 +457,6 @@ footer {
 }
 
 /* Skills Section */
-
-.skills-section {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--MAIN-BG);
-}
 
 .skills-container {
     width: 1200px;
@@ -499,10 +515,6 @@ footer {
 @media (max-width: 1000px) {
     /* Skills Section */
 
-    .skills-section {
-        height: 1300px;
-    }
-
     .skills-container {
         width: 350px;
     }
@@ -525,7 +537,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 }
 
 /* Projects Showcase */
@@ -632,7 +644,7 @@ footer {
 /* Showcase description */
 
 .showcase-item-description-container {
-    height: 150px;
+    height: 100px;
     width: 320px;
     display: flex;
     justify-content: center;
@@ -659,10 +671,6 @@ footer {
 
 @media (max-width: 1000px) {
     /* Projects Section */
-
-    .projects-section {
-        height: 2100px;
-    }
 
     .projects-container {
         width: 350px;
@@ -734,6 +742,10 @@ footer {
 
 @media (max-width: 1000px) {
     /* Contact Section */
+
+    .contact-section {
+        padding: 60px 0 135px 0;
+    }
 
     .form-container {
         padding: 20px;
