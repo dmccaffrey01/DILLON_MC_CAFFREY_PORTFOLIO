@@ -32,7 +32,7 @@ window.addEventListener('scroll', function(e) {
 function updateColor() {
     let scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
     let scrolledToBottom = Math.ceil(window.scrollY) >= scrollableHeight;
-    if (!scrolledToBottom) {
+    if (!scrolledToBottom || pageReload) {
         let newColor = calculateColor();
         document.documentElement.style.setProperty("--MAIN-BG", newColor)
     }
@@ -246,7 +246,9 @@ function enableTransition() {
     }
 }
 
+var pageReload = false
 window.addEventListener("load", () => {
+    pageReload = true
     scrollPositionY = window.pageYOffset;
     pageHeight = document.body.scrollHeight;
     screenHeight = pageHeight / 2;
@@ -255,4 +257,5 @@ window.addEventListener("load", () => {
         fadeInHeaderFooter();
         displayHeaderFooter();
     }
+    pageReload = false
 })
