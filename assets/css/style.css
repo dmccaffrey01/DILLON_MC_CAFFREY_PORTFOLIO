@@ -37,7 +37,7 @@ header {
     width: 100vw;
     overflow: hidden;
     background-color: var(--MAIN-TP);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -194,7 +194,7 @@ footer {
     width: 100vw;
     overflow: hidden;
     background-color: var(--MAIN-TP);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -216,6 +216,11 @@ footer {
 @media (max-width: 1000px) {
     footer {
         position: absolute;
+        display: flex;
+    }
+
+    header {
+        display: flex;
     }
 }
 

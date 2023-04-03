@@ -184,12 +184,75 @@ function getTranslateX(element) {
     return rounded
 }
 
+function displayHeaderFooter() {
+    let header = document.querySelector("header")
+    let footer = document.querySelector("footer")
+    header.style.display = "flex"
+    footer.style.display = "flex"
+}
+
+const navLinks = document.querySelectorAll(".nav-link")
+const welcomeLinks = document.querySelectorAll(".wel-nav-link")
+for (let i = 0; i < navLinks.length; i++) {
+    navLinks[i].addEventListener("click", (event) => {
+        if (window.innerWidth > 1000) {
+            event.preventDefault();
+            linkToSection(i, navLinks[i])
+        }
+    })
+
+    welcomeLinks[i].addEventListener("click", (event) => {
+        if (window.innerWidth > 1000) {
+            event.preventDefault();
+            linkToSection(i, welcomeLinks[i])
+        }
+    })
+}
+
+function linkToSection(i, link) {
+    disableTransition();
+    scrollToSection(link);
+    moveToSection(i);
+    enableTransition();
+}
+
+function scrollToSection(link) {
+    const targetId = link.getAttribute('href');
+    const targetSection = document.querySelector(targetId);
+    targetSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+function moveToSection(num) {
+    for (let i = 0; i < numContents; i++) {
+        let currentTranslateX = 100 * i
+        contents[i].style.transform = `translateX(${currentTranslateX - (100 * num)}%)`;
+    }
+    scrollPositionY = window.pageYOffset;
+    pageHeight = document.body.scrollHeight;
+    screenHeight = pageHeight / 2;
+    updateColor();
+    fadeInHeaderFooter();
+}
+
+function disableTransition() {
+    for (let i = 0; i < numContents; i++) {
+        contents[i].style.transition = "transform 0s ease";
+    }
+}
+
+function enableTransition() {
+    for (let i = 0; i < numContents; i++) {
+        contents[i].style.transition = "transform 0.5s ease";
+    }
+}
+
 window.addEventListener("load", () => {
     scrollPositionY = window.pageYOffset;
     pageHeight = document.body.scrollHeight;
-    screenHeight = pageHeight / 2
+    screenHeight = pageHeight / 2;
     if (window.innerWidth > 1000) {
         updateColor();
         fadeInHeaderFooter();
+        displayHeaderFooter();
     }
 })
