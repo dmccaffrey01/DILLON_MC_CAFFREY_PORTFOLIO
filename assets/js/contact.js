@@ -33,25 +33,12 @@ function sendEmail() {
 		dispalyAlert("Please fill in your name and email", "OK", () => {return;});
 		return false;
 	}
+	
+
+	
+
 	*/
-
-	// Get form data
-	const formData = new FormData(event.target);
-
-	// Send form data to server-side script
-	fetch('https://portfolio-form-api.herokuapp.com/submit', {
-	  method: 'POST',
-	  body: formData
-	}).then(response => {
-	  if (response.ok) {
-		// Handle successful response from server
-	  } else {
-		// Handle error response from server
-	  }
-	});
-
-
-		
+	dispalyAlert("Thank you for sending Dillon a message. He will be in contact with you soon.", "OK", () => {return;})
 	resetForm();
 }
 
@@ -67,31 +54,19 @@ function resetForm() {
 /**
  * Display alert message
  */
-function dispalyAlert(message, btn1, btn1Function, btn2, btn2Function) {
+function dispalyAlert(message, btn1, btn1Function) {
 	// Define vars
 	let alertSection = document.querySelector(".alert-section");
 	let alertText = document.querySelector(".alert-text");
-	let alertBtn1 = document.querySelector(".alert-btn1");
-	let alertBtn2 = document.querySelector(".alert-btn2");
-	
-	if (arguments.length <= 4) {
-		alertBtn2.classList.add("remove");
-	} else {
-		alertBtn2.innerText = btn2;
-
-		alertBtn2.addEventListener("click", () => {
-			btn2Function();
-			alertSection.classList.remove("active");
-		});
-	}
+	let alertBtn = document.querySelector(".alert-btn");
 
 	alertText.innerText = message;
 
-	alertBtn1.innerText = btn1;
+	alertBtn.innerText = btn1;
 
 	alertSection.classList.add("active");
 
-	alertBtn1.addEventListener("click", () => {
+	alertBtn.addEventListener("click", () => {
 		btn1Function();
 		alertSection.classList.remove("active");
 	});
