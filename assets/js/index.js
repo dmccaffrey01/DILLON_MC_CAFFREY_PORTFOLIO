@@ -304,6 +304,12 @@ swipeLeft.addEventListener("click", () => {
     moveToSection(Math.ceil(currentSectionNumber - 1));
 })
 
+for (let i = 0; i < numContents; i++) {
+    dots[i].addEventListener("click", () => {
+        moveToSection(i);
+    })
+}
+
 var pageReload = false
 window.addEventListener("load", () => {
     pageReload = true
