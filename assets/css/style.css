@@ -363,6 +363,14 @@ footer {
     gap: 40px;
 }
 
+.about-me-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--DARK-BG);
+    border-radius: 10px;
+}
+
 .about-me-card-container {
     width: 380px;
     height: 380px;
@@ -370,7 +378,6 @@ footer {
     justify-content: center;
     align-items: center;
     padding: 30px;
-    background-color: var(--MAIN-BG);
     border-radius: 10px;
 }
 
@@ -379,7 +386,7 @@ footer {
 .about-me-description {
     color: var(--WHITE-TEXT);
     font-size: 0.9rem;
-    line-height: 1.7rem;
+    line-height: 1.5rem;
 }
 
 /* About Me Image */
@@ -400,15 +407,9 @@ footer {
     flex-direction: column;
 }
 
-.interests-heading {
-    color: #bbbbbb;
-    font-size: 1.2rem;
-    line-height: 1.7rem;
-}
-
 .interests-item {
     font-size: 0.9rem;
-    line-height: 1.7rem;
+    line-height: 1.5rem;
     color: var(--WHITE-TEXT);
     padding: 8px;
     display: flex;
