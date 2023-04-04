@@ -355,6 +355,14 @@ footer {
     text-decoration: underline;
 }
 
+.about-me-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .about-me-container {
     width: 1200px;
     display: flex;
@@ -698,6 +706,14 @@ footer {
 }
 
 /* Contact Form section */
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
 
 .contact-form {
     display: flex;
