@@ -49,6 +49,7 @@ header {
 .header-container {
     height: 75px;
     width: calc(100vw - 80px);
+    max-width: 1000px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -377,7 +378,7 @@ footer {
 
 .about-me-description {
     color: var(--WHITE-TEXT);
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     line-height: 1.7rem;
 }
 
@@ -407,6 +408,7 @@ footer {
 
 .interests-item {
     font-size: 0.9rem;
+    line-height: 1.7rem;
     color: var(--WHITE-TEXT);
     padding: 8px;
     display: flex;
@@ -433,8 +435,8 @@ footer {
     }
 
     .about-me-description {
-        font-size: 1rem;
-        line-height: 1.4rem;
+        font-size: 0.7rem;
+        line-height: 1.3rem;
     }
 
     .interests-heading {
@@ -444,6 +446,7 @@ footer {
 
     .interests-item {
         font-size: 0.7rem;
+        line-height: 1.3rem;
         padding: 4px;
     }
 
@@ -542,7 +545,7 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
 }
 
 /* Projects Showcase */
@@ -718,7 +721,7 @@ footer {
 }
 
 .form-input:focus {
-    border: 3px solid var(--MAIN-BG);
+    border: 3px solid var(--DARK-BG);
     outline: none;
 }
 
@@ -828,7 +831,7 @@ footer {
 
 .swipe-btn i {
     font-size: 30px;
-    color: var(--WHITE-TEXT);
+    color: var(--DARK-BG);
     cursor: pointer;
     padding: 0 7px;
 }
