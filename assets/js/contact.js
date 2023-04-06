@@ -13,33 +13,48 @@ messageInput.addEventListener("focus", () => {
 });
 
 form.addEventListener("submit", (event) => {
-    event.preventDefault
-    sendEmail(event);
+    event.preventDefault();
+    sendEmail();
 })
+
+(function(){
+	emailjs.init("zPKR6_gHufVNrHLZT");
+})();
 
 /**
  * Send email
  */
 function sendEmail() {
-    /** 
+    
 	const formData = {
         name: nameInput.value,
         email: emailInput.value,
         message: messageInput.value
     }
-
-	
+	/** 
 	if (formData.name == "" || formData.email == "") {
 		dispalyAlert("Please fill in your name and email", "OK", () => {return;});
 		return false;
 	}
-	
-
-	
-
 	*/
-	dispalyAlert("Thank you for sending Dillon a message. He will be in contact with you soon.", "OK", () => {return;})
-	resetForm();
+
+	var templateParams = {
+		from_name: formData.name,
+		to_name: "Dillon",
+		from_email: formData.email,
+		message: formData.message,
+		reply_to: formData.email
+	};
+
+	emailjs.send("service_q2d91ik", "template_vlvkmvm", templateParams, "zPKR6_gHufVNrHLZT")
+		.then(function(response) {
+			console.log('SUCCESS!', response.status, response.text);
+			dispalyAlert("Thank you for sending Dillon a message. He will be in contact with you soon.", "OK", () => {return;})
+			resetForm();
+		}, function(error) {
+			console.log('FAILED...', error);
+			dispalyAlert("Sorry there was an error. Please try again or contact Dillon directly at 'dmccaffrey01@gmail.com'", "OK", () => {return;})
+		});
 }
 
 /**
