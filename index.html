@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dillon Mc Caffrey Portfolio">
     <meta name="keywords" content="Portfolio, Projects, Developer">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
@@ -18,7 +20,9 @@
             <!-- Logo -->
             <div class="logo-container">
                 <a href="index.html" class="logo">
-                    <div>Logo</div>
+                    <div class="logo-img-container">
+                        <img src="assets/images/logo.png" alt="Dillon Mc Caffrey Logo" class="logo">
+                    </div>
                 </a>
             </div>
             <!-- Nav Bar -->
@@ -46,10 +50,13 @@
             <!-- Social Links -->
             <div class="socials-container">
                 <a target="_blank" href="https://github.com/dmccaffrey01" class="social-link">
-                    <i class="fa-brands fa-github"></i>
+                    <i class="fa-brands fa-github" aria-hidden="true"></i>
                 </a>
                 <a target="_blank" href="https://www.linkedin.com/in/dillon-mc-caffrey-ab4771227/" class="social-link">
-                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                </a>
+                <a href="assets/cv/dillon-mc-caffrey-cv.pdf" target="_blank" class="social-link">
+                    <i class="fa fa-download" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -294,6 +301,11 @@
                     Contact
                 </div>
                 <form class="contact-form">
+                    <a href="assets/cv/dillon-mc-caffrey-cv.pdf" target="_blank" class="download-cv-container">
+                        <div class="cv-text-contact">Download</div>
+                        <div class="cv-text-contact">CV</div>
+                        <i class="fa fa-download" aria-hidden="true"></i>
+                    </a>
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-input contact-name-input" name="name" id="name">
                     <label for="email" class="form-label">Email</label>
