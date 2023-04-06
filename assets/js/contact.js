@@ -1,6 +1,4 @@
 const form = document.querySelector(".contact-form")
-const formID = "230885002127045"
-const apiKey = "f7bd66db8e94d4f67eec27a3fa10f097"
 
 const nameInput = document.querySelector(".contact-name-input");
 const emailInput = document.querySelector(".contact-email-input");
@@ -31,12 +29,11 @@ function sendEmail() {
         email: emailInput.value,
         message: messageInput.value
     }
-	/** 
+	
 	if (formData.name == "" || formData.email == "") {
 		dispalyAlert("Please fill in your name and email", "OK", () => {return;});
 		return false;
 	}
-	*/
 
 	var templateParams = {
 		from_name: formData.name,
