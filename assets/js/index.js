@@ -296,11 +296,18 @@ function addActiveDot(activeDot) {
 
 const swipeRight = document.querySelector(".swipe-right")
 swipeRight.addEventListener("click", () => {
+    if (currentSectionNumber == 3) {
+        return;
+    }
     moveToSection(Math.floor(currentSectionNumber + 1));
+
 })
 
 const swipeLeft = document.querySelector(".swipe-left")
 swipeLeft.addEventListener("click", () => {
+    if (currentSectionNumber == 0) {
+        return;
+    }
     moveToSection(Math.ceil(currentSectionNumber - 1));
 })
 
